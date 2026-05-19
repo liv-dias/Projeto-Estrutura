@@ -26,6 +26,14 @@ public class Node {
 	private Node next;
 	private Node previous;
 
+	public Node() {
+		this.id = "";
+		this.nome = "";
+		this.nota = 0.0f;
+		this.next = null;
+		this.previous = null;
+	}
+
 	public Node(String id, String nome, float nota, Node next, Node previous){
 		this.id = id;
 		this.nome = nome;
@@ -81,6 +89,6 @@ public class Node {
 
 	@Override
 	public String toString() {
-		return "[dados: (" + id + ";" + nome + ";" + inteiro + ";" + decimo + ") | next: " + next + "]";
+		return "[dados: (" + id + ";" + nome + ";" + nota + ") | next: " + next + "]";
 	}
 }

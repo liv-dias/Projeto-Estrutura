@@ -219,7 +219,32 @@ public class DLinkedList {
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 
-		
-	}
+		sb.append("(");
+		sb.append(count());
+		sb.append(")\n");
+		if(isEmpty()){
+			return sb.toString(); //Retorna só o count sem o null
+		}
 
+		Node node = head;
+		while(node != null){
+			String prev = (node.getPrevious() != null) ? node.getNext().getID() : null;
+			String nxt = (node.getNext() != null) ? node.getNext().getID() : null;
+
+			sb.append(prev)
+			.append("<-(")
+			.append(node.getID())
+			.append(";")
+			.append(node.getNome())
+			.append(";")
+			.append(node.getNota())
+			.append(") ->")
+			.append(nxt)
+			.append("\n");
+
+			node = node.getNext();
+		}
+		
+		return sb.toString();
+	}
 }
