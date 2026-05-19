@@ -5,7 +5,12 @@
 //*************************** ATENÇÃO! ****************************
 // arquivo: src/MainApl2.java
 
-// TODO: Colocar a identificação dos(as) integrantes aqui.
+/*
+Nome: Beatriz de Assis Siqueira                RA: 10741570
+Nome: Lívia Calado de Carvalho Dias        RA: 10737709
+Nome: Mateus Sarmento Machado                RA: 10741262
+*/
+
 // TODO: Listar todas as referências consultadas para solucionar a atividade.
 
 import apl2.DLinkedList;

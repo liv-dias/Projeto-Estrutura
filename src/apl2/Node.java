@@ -1,6 +1,10 @@
 // arquivo: src/apl2/Node.java
 
-// TODO: Colocar a identificação dos(as) integrantes aqui.
+/*
+Nome: Beatriz de Assis Siqueira                RA: 10741570
+Nome: Lívia Calado de Carvalho Dias        RA: 10737709
+Nome: Mateus Sarmento Machado                RA: 10741262
+*/
 
 package apl2;
 
@@ -15,7 +19,64 @@ package apl2;
 // {...}, retornando uma string com os valores dos atributos da classe.
 
 public class Node {
+	public static final String ANO = "23.S1";
+	private String id;
+	private String nome;
+	private float nota;
+	private Node next;
+	private Node previous;
+
+	public Node(String id, String nome, float nota, Node next, Node previous){
+		this.id = id;
+		this.nome = nome;
+		this.nota = nota;
+		this.next = next;
+		this.previous = previous;
+	}
+
+	//Getter e Setter do ID
+	public String getID(){
+		return id;
+	}
+
+	public void setID(String id){
+		this.id = id;
+	}
+
+	//Getter e Setter do Nome
+	public String getNome(){
+		return nome;
+	}
+
+	public void setNome(String nome){
+		this.nome = nome;
+	}
 	
-	// TODO: Implementar a classe conforme o enunciado da atividade Apl2.
-	
+	//Getter e Setter da Nota
+	public float getNota(){
+		return nota;
+	}
+
+	public void setNota(float nota){
+		this.nota = nota;
+	}
+
+	//Getter e Setter do Next
+	public Node getNext(){
+		return next;
+	}
+
+	public void setNext(Node next){
+		this.next = next;
+	}
+
+	//Getter e Setter do Previous
+	public Node getPrevious(){
+		return previous;
+	}
+
+	public void setPrevious(Node previous){
+		this.previous = previous;
+	}
+
 }

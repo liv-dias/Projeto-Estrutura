@@ -3,7 +3,11 @@
 //*************************** ATENÇÃO! *****************************
 // arquivo: src/apl2/Operation.java
 
-// TODO: Colocar a identificação dos(as) integrantes aqui.
+/*
+Nome: Beatriz de Assis Siqueira                RA: 10741570
+Nome: Lívia Calado de Carvalho Dias        RA: 10737709
+Nome: Mateus Sarmento Machado                RA: 10741262
+*/
 
 package apl2;
 
