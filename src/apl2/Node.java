@@ -79,4 +79,8 @@ public class Node {
 		this.previous = previous;
 	}
 
+	@Override
+	public String toString() {
+		return "[dados: (" + id + ";" + nome + ";" + inteiro + ";" + decimo + ") | next: " + next + "]";
+	}
 }
