@@ -217,6 +217,8 @@ public class DLinkedList {
 //					exemplo do método toString() da classe LinkedListOriginal).
 	@Override
 	public String toString() {
+		StringBuilder sb = new StringBuilder();
+
 		
 	}
 
