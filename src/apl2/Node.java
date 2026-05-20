@@ -89,6 +89,9 @@ public class Node {
 
 	@Override
 	public String toString() {
-		return "[dados: (" + id + ";" + nome + ";" + nota + ") | next: " + next + "]";
+		String prevID = (previous != null) ? previous.getID() : "null";
+		String nextID = (next != null) ? next.getID() : "null";
+
+		return prevID + " <- (" + id + "; " + nome + "; " + nota + ") -> " + nextID;
 	}
 }
