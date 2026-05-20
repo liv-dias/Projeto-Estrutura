@@ -19,6 +19,7 @@ package apl2;
 // {...}, retornando uma string com os valores dos atributos da classe.
 
 public class Node {
+	//Atributos da classe Node
 	public static final String ANO = "23.S1";
 	private String id;
 	private String nome;
@@ -26,6 +27,7 @@ public class Node {
 	private Node next;
 	private Node previous;
 
+	//Connstrutor sem parâmetros do nó
 	public Node() {
 		this.id = "";
 		this.nome = "";
@@ -34,6 +36,7 @@ public class Node {
 		this.previous = null;
 	}
 
+	//Construtor com parâmetros do nó
 	public Node(String id, String nome, float nota, Node next, Node previous){
 		this.id = id;
 		this.nome = nome;
@@ -89,9 +92,12 @@ public class Node {
 
 	@Override
 	public String toString() {
+		// Calcula o ID do nó anterior, se existir
 		String prevID = (previous != null) ? previous.getID() : "null";
+		// Calcula o ID do próximo nó, se existir
 		String nextID = (next != null) ? next.getID() : "null";
 
+		// Constrói a string de saída para este nó
 		return prevID + " <- (" + id + "; " + nome + "; " + nota + ") -> " + nextID;
 	}
 }

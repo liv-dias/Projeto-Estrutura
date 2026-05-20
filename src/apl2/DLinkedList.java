@@ -20,6 +20,7 @@ package apl2;
 
 
 public class DLinkedList {
+	//Atributos da classe DLinkedList
 	Node head = new Node();
 	Node tail = new Node();
 	int count;
