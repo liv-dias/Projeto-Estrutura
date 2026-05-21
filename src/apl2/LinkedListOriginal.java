@@ -1,67 +1,170 @@
 //******************** ATENÇÃO! *********************
 // O conteúdo deste arquivo não deve ser modificado!
 //******************** ATENÇÃO! *********************
-// arquivo: src/apl2/Data.java
+// arquivo: src/apl2/LinkedListOriginal.java
 
 package apl2;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-
-public class Data {
+public class LinkedListOriginal {
 	
-	/**
-	 * Cria uma string com o conteúdo do arquivo texto passado no parâmetro {@code filename}. 
-	 * 
-	 * @param filename Nome do arquivo texto a ser lido pelo método.
-	 * @return {@code String} contendo todo o conteúdo do arquivo texto.
-	 * @throws FileNotFoundException Arquivo passado no parâmetro {@code filename} não existe (exceção do {@code FileInputStream}).
-	 * @throws IOException Problema ao ler conteúdo do arquivo texto (exceção do {@code BufferedReader}).
-	 */
-    public static String loadTextFileToString(String filename) throws FileNotFoundException, IOException {
-        InputStream is = new FileInputStream(filename);
-        InputStreamReader isr = new InputStreamReader(is);
-        BufferedReader br = new BufferedReader(isr);
-
-        StringBuilder sb = new StringBuilder();
-		while (true) {
-            String line = br.readLine();
-            if (line == null) {
-                break;
-            }
-            sb.append(line).append('\n');
-        }
+	private NodeOriginal head;
+	private NodeOriginal tail;
+	private int count;
+	
+	public LinkedListOriginal() {
+		head = null;
+		tail = null;
+		count = 0;
+	}
+	
+	public void destroy() {
+		clear();
+	}
+	
+	public void insert(int id, String nome, int inteiro, int decimo) {
+		NodeOriginal node = new NodeOriginal(id, nome, inteiro, decimo, head);
 		
-		is.close();
+		if (isEmpty()) {
+			tail = node;
+		}
 		
-        return sb.toString();
-    }
+		head = node;
+		++count;
+	}
+	
+	public void append(int id, String nome, int inteiro, int decimo) {
+		NodeOriginal node = new NodeOriginal(id, nome, inteiro, decimo, null);
+		
+		if (isEmpty()) {
+			head = node;
+		} else {
+			tail.setNext(node);
+		}
+		
+		tail = node;
+		++count;
+	}
+	
+	public NodeOriginal removeHead() {
+		if (isEmpty()) {
+			return null;
+		}
+		
+		NodeOriginal toRemove = head;
 
-    /**
-     * Salva o conteúdo da {@code String} passada no parâmetro {@code contents} no arquivo texto passado no parâmetro {@code filename}.
-     *  
-     * @param filename Nome do arquivo texto para salvar o conteúdo da {@code String} {@code contents}.
-     * @param contents {@code String} com o conteúdo a ser salvo no arquivo texto {@code filename}.
-     * @throws FileNotFoundException Arquivo passado no parâmetro {@code filename} não existe (exceção do {@code FileOutputStream}).
-     * @throws IOException Problema ao escrever conteúdo no arquivo texto (exceção do {@code BufferedWriter}).
-     */
-    public static void saveStringToTextFile(String filename, String contents) throws FileNotFoundException, IOException {
-        OutputStream os = new FileOutputStream(filename);
-        OutputStreamWriter osw = new OutputStreamWriter(os);
-        BufferedWriter bw = new BufferedWriter(osw);
+		head = head.getNext();
+		--count;
+		
+		if (isEmpty()) {
+			tail = null;
+		}
+		
+		toRemove.setNext(null);
+		return toRemove;
+	}
+	
+	public NodeOriginal removeTail() {
+		if (head == tail)
+			return removeHead();
+		
+		NodeOriginal toRemove = head;
+		NodeOriginal previous = null;
+		while (toRemove != tail) {
+			previous = toRemove;
+			toRemove = toRemove.getNext();
+		}
+		
+		tail = previous;
+		tail.setNext(null);
+		--count;
+		
+		toRemove.setNext(null);
+		return toRemove;
+	}
+	
+	public NodeOriginal removeNode(int id) {
+		NodeOriginal toRemove = head;
+		NodeOriginal previous = null;
+		while (toRemove != null && toRemove.getId() != id) {
+			previous = toRemove;
+			toRemove = toRemove.getNext();
+		}
+		
+		if (toRemove == null) {
+			return null;
+		}
+		
+		if (toRemove == head) {
+			return removeHead();
+		}
+		
+		if (toRemove == tail) {
+			return removeTail();
+		}
+		
+		previous.setNext(toRemove.getNext());
+		--count;
+		
+		toRemove.setNext(null);		
+		return toRemove;
+	}
 
-        bw.write(contents);
-        bw.flush();
-        
-        os.close();
-    }
+	public NodeOriginal getHead() {
+		return head;
+	}
+	
+	public NodeOriginal getTail() {
+		return tail;
+	}
+	
+	public NodeOriginal getNode(int id) {
+		NodeOriginal node = head;
+		while (node != null) {
+			if (node.getId() == id) {
+				return node;
+			}
+			node = node.getNext();
+		}
+		
+		return null;
+	}
+	
+	public int count() {
+		return count;
+	}
+	
+	public boolean isEmpty() {
+		return head == null;
+	}
+	
+	public void clear() {
+		while (!isEmpty()) {
+			removeHead();
+		}
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append("(" + count + ") \n");
+		
+		NodeOriginal node = head;
+		while (node != null) {
+			sb.append("(")
+			.append(node.getId())
+			.append(" # ")
+			.append(node.getNome())
+			.append(" # ")
+			.append(node.getInteiro())
+			.append(" # ")
+			.append(node.getDecimo())
+			.append(") -> \n");
+			node = node.getNext();
+		}
+		sb.append("null.");
+		
+		return sb.toString();
+	}
 
 }
