@@ -93,6 +93,7 @@ public class DLinkedList {
 			tail = null;
 		}else{
 			head = head.getNext();
+			head.getPrevious().setNext(null);
 			head.setPrevious(null);
 		}
 
@@ -120,6 +121,7 @@ public class DLinkedList {
 			tail = null;
 		}else{
 			tail = tail.getPrevious();
+			tail.getNext().setPrevious(null);
 			tail.setNext(null);
 		}
 
